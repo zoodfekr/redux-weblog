@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.logo_img {
+    border-radius: 61%;
+    rotate: 20deg;
+    top: 29px;
+    position: relative;
+    opacity: 0.8;
+    filter: grayscale(1),
+}
