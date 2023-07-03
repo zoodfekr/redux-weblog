@@ -1,5 +1,6 @@
 import { Box, Divider } from '@mui/material';
 import logo from '../../assets/logo.jpg';
+import Themebutton from '../common/Themebutton';
 
 const Sidebar_header = () => {
     return (
@@ -8,6 +9,8 @@ const Sidebar_header = () => {
                 <Box component="img" src={logo} sx={{ height: "auto", maxWidth: "400px", width: 1 }} className='logo_img' />
             </Box>
             <Divider sx={{mt:6}} variant="middle"  color={"red"} variant="middle" />
+
+            <Themebutton></Themebutton>
         </>
     )
 };

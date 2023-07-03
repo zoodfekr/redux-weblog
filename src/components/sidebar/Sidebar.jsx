@@ -1,4 +1,4 @@
-import Sidebar_header from "./SIdebar_header";
+import Sidebar_header from "./Sidebar_header";
 
 
 const Sidebar = () => {

@@ -3,6 +3,7 @@ import { Grid } from "@mui/material";
 const Content_container = () => {
     return (
         <Grid
+        item
             xs={12}
             sm={12}
             md={9}
