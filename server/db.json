@@ -1,0 +1,63 @@
+{
+  "post": [
+    {
+      "id": 1,
+      "subject": "",
+      "date": "",
+      "comments": "",
+      "text": "",
+      "image": "",
+      "category": ""
+    },
+    {
+      "title": "fdgdgdg",
+      "text": "drgdgdgr",
+      "group": "10",
+      "date": "1402/04/23",
+      "id": 2
+    },
+    {
+      "title": "تست دوم",
+      "text": "متن تست تستستستستستتستس",
+      "group": "30",
+      "date": "1402/04/23",
+      "id": 3
+    },
+    {
+      "title": "awdad",
+      "text": "adadad",
+      "group": "10",
+      "date": "1402/04/23",
+      "id": 4
+    },
+    {
+      "title": "e5tetet",
+      "text": "etetet",
+      "group": "10",
+      "date": "1402/04/23",
+      "id": 5
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "تکنولوژی"
+    },
+    {
+      "id": "2",
+      "name": "پزشکی"
+    },
+    {
+      "id": "3",
+      "name": "عمومی"
+    },
+    {
+      "id": "4",
+      "name": "علمی"
+    },
+    {
+      "id": "5",
+      "name": "متفرقه"
+    }
+  ]
+}

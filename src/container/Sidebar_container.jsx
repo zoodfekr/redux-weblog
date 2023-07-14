@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material"
+import { Box, Grid } from "@mui/material"
 import Sidebar from "../components/sidebar/Sidebar";
 import { useDispatch, useSelector } from 'react-redux';
 import { darktheme, lighttheme } from "./theme";
@@ -6,18 +6,19 @@ import { darktheme, lighttheme } from "./theme";
 const Sidebar_container = () => {
 
     const selector = useSelector(state => state.theme);
-    let theme = selector.mode? darktheme : lighttheme;
 
     return (
         <Grid
             item
             xs={0}
-            // sm={0}
             md={3}
             lg={2}
             xl={2}
             sx={{
-                background: theme.palette.primary.main, display: {
+                height: "100vh",
+                overflowX: "hidden",
+                overflowY: "auto",
+                display: {
                     xs: "none", sm: "none", md: "block"
                 }
             }}

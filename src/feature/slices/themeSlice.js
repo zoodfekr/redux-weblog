@@ -10,7 +10,7 @@ export const themeSlice = createSlice({
             state.mode == false ?
                 state.mode = true :
                 state.mode = false
-        }
+        },
     }
 });
 

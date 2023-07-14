@@ -4,10 +4,36 @@ body {
 }
 
 .logo_img {
-    border-radius: 61%;
-    rotate: 20deg;
-    top: 29px;
+    /* border-radius: 61%; */
+    /* rotate: 20deg; */
+    /* top: 29px; */
     position: relative;
     opacity: 0.8;
-    filter: grayscale(1),
+
+}
+
+/* .css-6od3lo-MuiChip-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+    margin: 0 !important;
+    white-space: nowrap;
+} */
+
+/* تغییر عرض و رنگ اسکرول بار */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+    background-color: #f5f5f5;
+}
+
+/* تغییر رنگ thumb */
+::-webkit-scrollbar-thumb {
+    background-color: #555;
+}
+
+/* تغییر رنگ track */
+::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
 }
