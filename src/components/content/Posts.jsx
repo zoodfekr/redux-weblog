@@ -13,11 +13,11 @@ const Posts = () => {
 
     const posts = selector.map(data => {
         return (
-            <Card sx={{ maxWidth: "1200px", m: 2, borderRadius: "20px" }}>
+            <Card sx={{ maxWidth: "1200px", m: 1, borderRadius: "20px" }}>
                 <CardActionArea sx={{ display: "flex", flexDirection: "column", alignItems: "start" }}>
 
                     <Box sx={{ display: "flex", flexDirection: "column", alignItems: "start", justifyContent: "start", width: 1, p: 1, background: "#f2b8ff" }}>
-                        <Typography gutterBottom variant="h5" component="div">
+                        <Typography gutterBottom variant="h5" component="div" fontFamily={"vazir"} >
                             {data.title}
                         </Typography>
 
@@ -35,12 +35,12 @@ const Posts = () => {
                         sx={{ width: 1, height: "250px" }}
                     />
                     <CardContent className="d-flex flex-column border w-100" >
-                        <Typography variant="body2" color="text.secondary" >
+                        <Typography variant="body1" color="text.secondary" align="justify"  fontFamily={"vazir"} sx={{lineHeight: "1.5rem"}}>
                             {data.text.substring(0, 500)}
                         </Typography>
                     </CardContent>
 
-                    <Box sx={{ p: 2 }}>
+                    <Box sx={{ p:2}}>
                         <Link to={`/blogs/${data.id}`} className="btn btn-secondary btn-sm">دیدن کامل پست</Link>
                     </Box>
 
@@ -53,7 +53,7 @@ const Posts = () => {
 
     return (
         <>
-            <Box sx={{}}>
+            <Box sx={{p:2}}>
                 {posts}
             </Box>
 
