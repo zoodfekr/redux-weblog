@@ -6,7 +6,7 @@ export const send_post = (data) => {
     return axios.post(url, data)
 }
 
-export const get_post = () => {
+export const get_post = (data) => {
     const url = `${server_url}/post`
     return axios.get(url)
 

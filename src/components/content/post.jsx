@@ -1,31 +1,32 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Chip, Typography } from "@mui/material";
-import img from '../../assets/post-img.png';
-import { BiCommentDetail } from "react-icons/bi";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import img from '../../assets/post-img.png'
+const post = () => {
+
+    const { blogid } = useParams();
+    const single_post = useSelector(state => state.blog.find(blog => blog.id == blogid));
 
 
-const Posts = () => {
+    console.log("blogid", blogid, single_post);
 
-
-    const selector = useSelector(state => state.blog);
-
-    const posts = selector.map(data => {
-        return (
+    return (
+        <>
             <Card sx={{ maxWidth: "1200px", m: 2, borderRadius: "20px" }}>
                 <CardActionArea sx={{ display: "flex", flexDirection: "column", alignItems: "start" }}>
 
                     <Box sx={{ display: "flex", flexDirection: "column", alignItems: "start", justifyContent: "start", width: 1, p: 1, background: "#f2b8ff" }}>
                         <Typography gutterBottom variant="h5" component="div">
-                            {data.title}
+                            {single_post.title}
                         </Typography>
 
                         <Typography sx={{ my: 1 }}>
-                            <Chip label={data.date} />
-                            <Chip sx={{ mx: 1 }} label={data.group} />
+                            <Chip label={single_post.date} />
+                            <Chip sx={{ mx: 1 }} label={single_post.group} />
                         </Typography>
                     </Box>
+
+
 
                     <CardMedia
                         component="img"
@@ -34,31 +35,19 @@ const Posts = () => {
                         alt="green iguana"
                         sx={{ width: 1, height: "250px" }}
                     />
+
                     <CardContent className="d-flex flex-column border w-100" >
                         <Typography variant="body2" color="text.secondary" >
-                            {data.text.substring(0, 500)}
+                            {single_post.text}
                         </Typography>
                     </CardContent>
 
-                    <Box sx={{ p: 2 }}>
-                        <Link to={`/blogs/${data.id}`} className="btn btn-secondary btn-sm">دیدن کامل پست</Link>
-                    </Box>
 
                 </CardActionArea>
             </Card>
-        )
-
-    })
-
-
-    return (
-        <>
-            <Box sx={{}}>
-                {posts}
-            </Box>
 
         </>
     )
 };
 
-export default Posts;
+export default post;
