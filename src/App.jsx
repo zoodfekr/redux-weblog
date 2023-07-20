@@ -5,6 +5,7 @@ import App_container from './container/App_container'
 import Posts from './components/content/Posts'
 import Add from './components/content/Add'
 import Post from './components/content/post'
+import Edit from './components/content/Edit'
 
 
 function App() {
@@ -18,8 +19,7 @@ function App() {
           <Route path='/' element={<Posts />} />
           <Route path='/add' element={<Add />} />
           <Route path='/blogs/:blogid' element={<Post />} />
-
-
+          <Route path='/edit/:blogid' element={<Edit />} />
         </Route >
       </Routes>
     </>

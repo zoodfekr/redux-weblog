@@ -4,28 +4,32 @@ import { yupSchema } from "../../constant/yup";
 import { format } from 'date-fns-jalali'
 import { send_post } from "../../services/postservices";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { added_post } from "../../feature/slices/blogsSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 const Add = () => {
 
-
+    const disppatch = useDispatch();
     const navigate = useNavigate();
-    const use_send_post = async values => {
 
-        try {
-            const { status } = await send_post(values)
-            console.log("status",status);
-            if (status === 201) {
-                navigate("/");
-            }
-        } catch {
-            console.log("error in send post")
-        }
-    }
+    // const use_send_post = async values => {
+    //     try {
+    //         const { status } = await send_post(values)
+    //         console.log("status", status);
+    //         if (status === 201) {
+    //             navigate("/");
+    //         }
+    //     } catch {
+    //         console.log("error in send post")
+    //     }
+    // }
 
+ 
 
-
-    const formik = useFormik({
+    const formik = useFormik({ 
         initialValues: {
+            id: nanoid(),
             title: '',
             text: '',
             group: '',
@@ -33,14 +37,12 @@ const Add = () => {
         },
         validationSchema: yupSchema,
         onSubmit: (values, event) => {
-            use_send_post(values);
+            // use_send_post(values);
+            console.log(values);
+            navigate("/");
+            disppatch(added_post(values))
         }
     });
-
-
-
-
-
 
 
     return (
@@ -49,7 +51,6 @@ const Add = () => {
             <Card sx={{
                 borderRadius: "25px",
                 backdropFilter: "blur(5px)",
-                // border: "1px solid red",
                 width: '100%'
             }}>
 
@@ -66,7 +67,7 @@ const Add = () => {
                                 onChange={formik.handleChange}
                                 error={formik.touched.title && Boolean(formik.errors.title)}
                                 helperText={formik.touched.title && formik.errors.title}
-                                dir="rtl"
+                                dir="helpertext "
                                 fullWidth
                                 size="small"
                                 // color="danger"
@@ -93,7 +94,7 @@ const Add = () => {
                                 id="text"
                                 name="text"
                                 error={formik.touched.text && Boolean(formik.errors.text)}
-                                helperText={formik.touched.text && formik.errors.text}
+                                helpertext={formik.touched.text && formik.errors.text}
                                 value={formik.values.text}
                                 onChange={formik.handleChange}
                                 className="col-12 form form-control"
@@ -108,7 +109,7 @@ const Add = () => {
                                 <InputLabel id="demo-simple-select-label">دسته بندی</InputLabel>
                                 <Select
                                     error={formik.touched.group && Boolean(formik.errors.group)}
-                                    helperText={formik.touched.group && formik.errors.group}
+                                    helpertext={formik.touched.group && formik.errors.group}
                                     labelId="demo-simple-select-label"
                                     id="group"
                                     name="group"

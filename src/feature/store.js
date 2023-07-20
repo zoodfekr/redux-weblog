@@ -4,10 +4,12 @@ import sidebar from "./slices/sidebarSlice";
 import blog from "./slices/blogsSlice";
 
 
+
+
 export default configureStore({
     reducer: {
         theme,
         sidebar,
-        blog
+        blog, 
     },
 });
