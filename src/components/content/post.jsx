@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import img from '../../assets/post-img.png'
 import { delete_post, selectedBlogbyId } from "../../feature/slices/blogsSlice";
+import Date_write from "../common/Date_write";
 
 const post = () => {
 
@@ -42,8 +43,8 @@ const post = () => {
 
                             <Box sx={{ width: 1, display: "flex", justifyContent: "space-between", px: 2 }}>
                                 <Box>
-                                    <Chip label={single_post.date} />
-                                    <Chip sx={{ mx: 1 }} label={single_post.group} />
+                                    <Chip sx={{ mx: 1 }} label={<Date_write time={single_post.date}></Date_write>} />
+                                    <Chip sx={{ mx: 1 }} label={<Typography sx={{fontFamily:"vazir"}}>{single_post.group}</Typography>} />
                                 </Box>
                                 <Box>
                                     <Link to={`/edit/${single_post.id}`} className="btn  btn-sm mx-1" sx={{ fontFamily: "vazir" }} >

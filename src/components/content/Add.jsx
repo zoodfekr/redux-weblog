@@ -33,7 +33,7 @@ const Add = () => {
             title: '',
             text: '',
             group: '',
-            date: format(new Date(), 'yyyy/MM/dd'),
+            date: new Date().toISOString(),
         },
         validationSchema: yupSchema,
         onSubmit: (values, event) => {
