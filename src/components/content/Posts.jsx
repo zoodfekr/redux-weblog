@@ -9,11 +9,10 @@ import Date_write from "../common/Date_write";
 
 
 const Posts = () => {
-
-
     const selector = useSelector(state => state.blog.blog);
+    const sorted_selector = selector.slice().sort((a, b) => b.date.localeCompare(a.date));
 
-    const posts = selector.toReversed().map(data => {
+    const posts = sorted_selector.map(data => {
         return (
             <Card sx={{ m: 1, borderRadius: "20px" }}>
                 <CardActionArea sx={{ display: "flex", flexDirection: "column", alignItems: "start" }}>
@@ -25,7 +24,7 @@ const Posts = () => {
 
 
                         <Typography sx={{ my: 0 }}>
-                            <Chip sx={{ mx: 1 }} label={<Typography sx={{fontFamily:"vazir"}}>{data.group}</Typography>} />
+                            <Chip sx={{ mx: 1 }} label={<Typography sx={{ fontFamily: "vazir" }}>{data.group}</Typography>} />
                             <Chip sx={{ mx: 1 }} label={<Date_write time={data.date}></Date_write>} />
                         </Typography>
                     </Box>
