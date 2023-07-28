@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { yupSchema } from "../../constant/yup";
-import { Box, Card } from "@mui/material";
+import { Box, Card, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useState } from "react";
 import { update_post } from '../../feature/slices/blogsSlice';
 
@@ -12,6 +12,7 @@ const Edit = () => {
     const { blogid } = useParams();
     const dispatch = useDispatch();
     const selector = useSelector(state => state.blog.blog).find(event => event.id == blogid);
+    const groups = useSelector(state => state.wr_gr.groups);
     const [data, setdata] = useState(selector);
 
     const handleChange = event => {
@@ -72,6 +73,28 @@ const Edit = () => {
 
                         />
                     </div>
+
+                    <FormControl fullWidth className="form form-control my-2">
+                        <InputLabel id="demo-simple-select-label">دسته بندی</InputLabel>
+                        <Select
+                            // error={formik.touched.group && Boolean(formik.errors.group)}
+                            // helpertext={formik.touched.group && formik.errors.group}
+                            labelId="demo-simple-select-label"
+                            id="group"
+                            name="group"
+                            value={data.group}
+                            label="دسته بندی"
+                            onChange={handleChange}
+                        >
+                            {groups.map((value) => {
+                                return (
+                                    <MenuItem key={value.id} value={value.group}>{value.group}</MenuItem>
+                                )
+                            })}
+
+                        </Select>
+                    </FormControl>
+
                     <div style={{ display: "flex", flexDirection: "row" }}>
                         <button
                             style={{ fontFamily: "vazir" }}

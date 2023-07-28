@@ -5,11 +5,13 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Date_write from "../common/Date_write";
+import Writer_component from "../common/Writer_component";
 
 
 
 const Posts = () => {
     const selector = useSelector(state => state.blog.blog);
+    const writers = useSelector(state => state.writers);
     const sorted_selector = selector.slice().sort((a, b) => b.date.localeCompare(a.date));
 
     const posts = sorted_selector.map(data => {
@@ -22,10 +24,13 @@ const Posts = () => {
                             {data.title}
                         </Typography>
 
-
                         <Typography sx={{ my: 0 }}>
                             <Chip sx={{ mx: 1 }} label={<Typography sx={{ fontFamily: "vazir" }}>{data.group}</Typography>} />
                             <Chip sx={{ mx: 1 }} label={<Date_write time={data.date}></Date_write>} />
+                            <Chip sx={{ mx: 1 }} label={<Typography sx={{ fontFamily: "vazir" }}>نویسنده:  {data.writer}</Typography>} />
+
+                            {/* <Chip sx={{ mx: 1 }} label={<Writer_component userid={data.writerid} />} /> */}
+
                         </Typography>
                     </Box>
 
@@ -36,6 +41,7 @@ const Posts = () => {
                         alt="green iguana"
                         sx={{ width: 1, height: "250px" }}
                     /> */}
+
                     <CardContent className="d-flex flex-column border w-100" >
                         <Typography variant="body1" color="text.secondary" align="justify" fontFamily={"vazir"} sx={{ lineHeight: "1.5rem" }}>
                             {data.text.substring(0, 500)}

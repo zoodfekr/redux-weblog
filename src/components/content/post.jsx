@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import img from '../../assets/post-img.png'
 import { delete_post, selectedBlogbyId } from "../../feature/slices/blogsSlice";
 import Date_write from "../common/Date_write";
+import Writer_cimponent from "../common/Writer_component";
 
 const post = () => {
 
@@ -45,6 +46,8 @@ const post = () => {
                                 <Box>
                                     <Chip sx={{ mx: 1 }} label={<Date_write time={single_post.date}></Date_write>} />
                                     <Chip sx={{ mx: 1 }} label={<Typography sx={{fontFamily:"vazir"}}>{single_post.group}</Typography>} />
+                                    <Chip sx={{ mx: 1 }} label={<Typography sx={{ fontFamily: "vazir" }}>نویسنده:  {single_post.writer}</Typography>} />
+
                                 </Box>
                                 <Box>
                                     <Link to={`/edit/${single_post.id}`} className="btn  btn-sm mx-1" sx={{ fontFamily: "vazir" }} >

@@ -4,7 +4,7 @@ import { yupSchema } from "../../constant/yup";
 import { format } from 'date-fns-jalali'
 import { send_post } from "../../services/postservices";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { added_post } from "../../feature/slices/blogsSlice";
 import { nanoid } from "@reduxjs/toolkit";
 
@@ -12,6 +12,9 @@ const Add = () => {
 
     const disppatch = useDispatch();
     const navigate = useNavigate();
+    const groups = useSelector(state => state.wr_gr.groups);
+    const writer = useSelector(state => state.wr_gr.writers);
+
 
     // const use_send_post = async values => {
     //     try {
@@ -25,20 +28,21 @@ const Add = () => {
     //     }
     // }
 
- 
 
-    const formik = useFormik({ 
+
+    const formik = useFormik({
         initialValues: {
             id: nanoid(),
+            date: new Date().toISOString(),
             title: '',
             text: '',
             group: '',
-            date: new Date().toISOString(),
+            writer: '',
         },
         validationSchema: yupSchema,
         onSubmit: (values, event) => {
             // use_send_post(values);
-            console.log(values);
+            // console.log(values);
             navigate("/");
             disppatch(added_post(values))
         }
@@ -117,10 +121,34 @@ const Add = () => {
                                     label="دسته بندی"
                                     onChange={formik.handleChange}
                                 >
+                                    {groups.map((value) => {
+                                        return (
+                                            <MenuItem key={value.id} value={value.group}>{value.group}</MenuItem>
+                                        )
+                                    })}
 
-                                    <MenuItem value={"10"}>عملی</MenuItem>
-                                    <MenuItem value={"20"}>پزشکی</MenuItem>
-                                    <MenuItem value={"30"}>تکنولوژی</MenuItem>
+                                </Select>
+                            </FormControl>
+
+                            <FormControl fullWidth className="form form-control my-1">
+                                <InputLabel id="demo-simple-select-label2">نویسنده</InputLabel>
+                                <Select
+                                    error={formik.touched.writer && Boolean(formik.errors.writer)}
+                                    helpertext={formik.touched.writer && formik.errors.writer}
+                                    labelId="demo-simple-select-label2"
+                                    id="writer"
+                                    name="writer"
+                                    value={formik.values.writer}
+                                    label="گروه"
+                                    onChange={formik.handleChange}
+                                >
+                                    {writer.map((valueg) => {
+                                        // console.log(valueg.writer);
+                                        return (
+                                            <MenuItem key={valueg.id} value={valueg.writer}>{valueg.writer}</MenuItem>
+                                        )
+                                    })}
+
                                 </Select>
                             </FormControl>
 
