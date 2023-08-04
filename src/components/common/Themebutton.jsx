@@ -55,7 +55,6 @@ const Themebutton = () => {
     const selector = useSelector(state => state.theme);
 
     const handlemode = () => {
-        console.log("selector.mode",selector.mode);
         dispatch(toggleTheme())
     }
 

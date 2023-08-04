@@ -11,7 +11,6 @@ const DrawerActionButton = () => {
     const selector = useSelector(state => state.sidebar);
 
     const handleEvent = () => {
-        console.log("sidebar:", selector.show);
         dispatch(toggleSidebar());
     }
 

@@ -44,19 +44,24 @@ const post = () => {
 
                             <Box sx={{ width: 1, display: "flex", justifyContent: "space-between", px: 2 }}>
                                 <Box>
-                                    <Chip sx={{ mx: 1 }} label={<Date_write time={single_post.date}></Date_write>} />
-                                    <Chip sx={{ mx: 1 }} label={<Typography sx={{fontFamily:"vazir"}}>{single_post.group}</Typography>} />
-                                    <Chip sx={{ mx: 1 }} label={<Typography sx={{ fontFamily: "vazir" }}>نویسنده:  {single_post.writer}</Typography>} />
+                                    <Chip sx={{ mx: 1, my: 0.5, minWidth: "150px" }} label={<Date_write time={single_post.date}></Date_write>} />
+                                    <Chip sx={{ mx: 1, my: 0.5, minWidth: "150px" }} label={<Typography sx={{ fontFamily: "vazir" }}>دسته بندی: {single_post.group}</Typography>} />
+                                    <Chip sx={{ mx: 1, my: 0.5, minWidth: "150px" }} label={<Typography sx={{ fontFamily: "vazir" }}>نویسنده:  {single_post.writer}</Typography>} />
 
                                 </Box>
                                 <Box>
-                                    <Link to={`/edit/${single_post.id}`} className="btn  btn-sm mx-1" sx={{ fontFamily: "vazir" }} >
-                                        <Typography sx={{ fontFamily: "vazir" }}>
+
+
+                                    <Button className="w-100  mx-1"
+                                        onClick={() => navigate(`/edit/${single_post.id}`)}>
+                                        <Typography sx={{ fontFamily: "vazir" }} className="btn btn-primary btn-sm w-100">
                                             ویرایش
                                         </Typography>
-                                    </Link>
-                                    <Button sx={{ fontFamily: "vazir" }} variant="">
-                                        <Typography sx={{ fontFamily: "vazir" }} onClick={handleDelete}>
+                                    </Button>
+
+
+                                    <Button className="w-100 mx-1" >
+                                        <Typography sx={{ fontFamily: "vazir" }} onClick={handleDelete} className="btn btn-danger btn-sm w-100">
                                             حذف
                                         </Typography>
                                     </Button>

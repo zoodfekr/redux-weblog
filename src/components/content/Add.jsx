@@ -38,6 +38,10 @@ const Add = () => {
             text: '',
             group: '',
             writer: '',
+            actionButton: {
+                heart: 0,
+                like: 0,
+            }
         },
         validationSchema: yupSchema,
         onSubmit: (values, event) => {
